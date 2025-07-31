@@ -4,13 +4,13 @@ class Solution:
         d = Counter(s)
         # print(d)
         t = max(d.values())
+        if t == 1:
+            return s
         # print(t)
         ch = set()
         for i in d:
             if d[i] == t:
                 ch.add(i)
-        if len(s) <= 1:
-            return ''.join(list(s))
         # print(ch)
         ans = ""
         for i in s:
