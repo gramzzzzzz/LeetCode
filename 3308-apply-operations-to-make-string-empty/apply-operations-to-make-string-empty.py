@@ -9,6 +9,8 @@ class Solution:
         for i in d:
             if d[i] == t:
                 ch.add(i)
+        if len(s) <= 1:
+            return ''.join(list(s))
         # print(ch)
         ans = ""
         for i in s:
