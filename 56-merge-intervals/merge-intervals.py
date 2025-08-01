@@ -1,9 +1,9 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         n = len(intervals)
-        intervals.sort()
         if n < 2:
             return intervals
+        intervals.sort()
 
         ans = []
 
