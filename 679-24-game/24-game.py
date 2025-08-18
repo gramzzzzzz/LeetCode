@@ -4,7 +4,6 @@ class Solution:
             st = []
             for i in arr:
                 if i in ['*', '-', '+', '/']:
-                    # print(len(arr))
                     if len(st) < 2:
                         return False
                     b = st.pop()
@@ -28,24 +27,43 @@ class Solution:
 
         vis = set()
         arr = []
-        def helper():
-            if len(arr) == 7:
-                # if arr[0] == 9 and arr[1] == 1:
-                    # print(arr)
-                return eval(arr)
+        def helper(cnt):
+            if cnt == 7:
+                if len(arr) > 1:
+                    return False
+                # print(arr)
+                return 23.991 <= arr[0] <= 24.001
+            # if len(arr) == 7:
+            #     return eval(arr)
             ans = False
             for i in range(4):
                 if i not in vis:
                     vis.add(i)
                     arr.append(cards[i])
-                    ans |= helper()
+                    ans |= helper(cnt+1)
                     arr.pop()
                     vis.remove(i)
             if len(arr) >= 2:
                 for i in ['*', '-', '+', '/']:
-                    arr.append(i)
-                    ans |= helper()
+                    b = arr.pop()
+                    a = arr.pop()
+                    if i == '*':
+                        res = (a*b)
+                    elif i == '+':
+                        res = (a+b)
+                    elif i == '-':
+                        res = (a-b)
+                    else:
+                        if b == 0:
+                            arr.append(a)
+                            arr.append(b)
+                            continue
+                        res = (a/b)
+                    arr.append(res)
+                    ans |= helper(cnt+1)
                     arr.pop()
+                    arr.append(a)
+                    arr.append(b)
             return ans
 
-        return helper()
+        return helper(0)
