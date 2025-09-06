@@ -14,10 +14,12 @@ class Solution:
             else:
                 curans = power*(min(cur, r) - l)
                 power += 1
-                while 4**power <= r:
-                    curans += power*(4**power - cur)
-                    cur = 4**power
+                nex = 4 ** power
+                while nex <= r:
+                    curans += power*(nex - cur)
+                    cur = nex
                     power += 1
+                    nex = 4**power
                 curans += power*(r-cur+1)
             if curans%2 == 0:
                 ans += curans//2
