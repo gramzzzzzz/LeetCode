@@ -19,7 +19,6 @@ class Solution:
                     cur = 4**power
                     power += 1
                 curans += power*(r-cur+1)
-            print(curans)
             if curans%2 == 0:
                 ans += curans//2
             else:
