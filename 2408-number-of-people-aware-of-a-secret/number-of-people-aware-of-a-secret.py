@@ -12,7 +12,6 @@ class Solution:
             ans = 0
             for i in range(curn+delay, curn+forget):
                 ans += helper(i)
-            print(curn, ans)
             return ans%1000000007
         
         return helper(1)
